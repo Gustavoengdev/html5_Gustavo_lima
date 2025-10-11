@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    
+    <title>Início | ONG Cruzeiro do Sul - Visão Geral das Atividades</title> 
+
+    <link rel="stylesheet" href="styles.css">
+    
+    <style> 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 30px 20px;
+            background-color: #f0f4f7; /* Fundo mais suave */
+            color: #333;
+            min-height: 100vh; /* Garante que o corpo ocupe pelo menos a altura da tela */
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center; 
+            margin-bottom: 25px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 0;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+        ul {
+            list-style-type: none; /* Remove o marcador para melhor controle do layout */
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        li a {
+            color: #2980b9; 
+            text-decoration: none;
+            font-weight: 500;
+            display: block; /* Ocupa a largura total do LI */
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+        li a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Classes de Acessibilidade (sr-only) - Mantidas */
+        .sr-only { /* ... CSS de acessibilidade ... */ }
+        .sr-only:focus { /* ... CSS de acessibilidade ... */ }
+        
+        /* CONTAINER PRINCIPAL: Centraliza o conteúdo e dá a aparência de "card" */
+        .conteudo-principal-flex {
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+            align-items: flex-start;
+            gap: 30px; 
+            max-width: 900px; /* Reduzido levemente para maior compactação */
+            margin: 0 auto 30px auto; 
+            padding: 25px;
+            background-color: #fff; /* Fundo branco para o conteúdo principal */
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* IMAGEM */
+        .banner-principal {
+            width: 100%;
+            max-width: 400px; /* Reduzido o tamanho da imagem */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* NAVEGAÇÃO */
+        nav[aria-label="Navegação Principal"] {
+            flex-grow: 1; 
+            min-width: 250px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        /* CSS DA ANIMAÇÃO */
+        @keyframes subtle-glow {
+            0% { background-color: #ffe0b2; box-shadow: 0 0 5px rgba(255, 165, 0, 0.4); }
+            50% { background-color: #fff; box-shadow: none; }
+            100% { background-color: #ffe0b2; box-shadow: 0 0 5px rgba(255, 165, 0, 0.4); }
+        }
+        
+        /* Classe que será adicionada/removida pelo JavaScript */
+        .active-pulse a {
+            background-color: #ff9900 !important; /* Cor de fundo inicial */
+            color: white !important;
+            animation: subtle-glow 3s ease-in-out infinite; /* Aplica a animação */
+        }
+        
+        /* Estilo base para o link de cadastro (para garantir que a animação funcione bem) */
+        #cadastro-link a {
+            display: inline-block;
+            font-weight: bold;
+            color: #ff9900; 
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        /* FIM DO CSS DA ANIMAÇÃO */
+    </style>
+</head>
+
+<body>
+    <a href="#conteudo-principal" class="sr-only">Pular para o Conteúdo Principal</a>
+    
+    <main id="conteudo-principal"> 
+        <header>
+            <h1>ONG Cruzeiro do Sul</h1>
+        </header>
+
+        <div class="conteudo-principal-flex">
+            <img 
+                src="https://www.editoracidadania.com.br/wp-content/uploads/2022/11/12-3.png" 
+                alt="Imagem de doação em grupo, representando a assistência social da ONG."
+                class="banner-principal"
+            >
+
+            <nav aria-label="Navegação Principal"> 
+                <h2>Nossas Causas</h2>
+                <ul>
+                    <li><a href="Educacao.html">Educação</a></li> 
+                    <li><a href="saude.html">Saúde</a></li>
+                    <li><a href="meio-ambiente.html">Meio Ambiente</a></li>
+                    <li><a href="assistencia-social.html">Assistência Social</a></li>
+                    <li><a href="culturaelazer.html">Cultura e Lazer</a></li> 
+                    
+                    <li id="cadastro-link">
+                        <a href="cadastro.html">Cadastro de Voluntários</a>
+                    </li>
+                </ul>
+            </nav>
+        </div> 
+
+        <footer>
+            <h3><a href="sobre.html" aria-label="Ir para a página Sobre meu Projeto">Sobre meu Projeto</a></h3>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Seleciona o elemento que queremos animar usando o ID
+            const ctaLink = document.getElementById('cadastro-link');
+            
+            // 2. Define a função que aplica e remove a classe de animação
+            function togglePulse() {
+                // Adiciona a classe 'active-pulse' para iniciar a animação CSS
+                ctaLink.classList.add('active-pulse');
+                
+                // Remove a classe após 2.5 segundos (um pouco menos que o ciclo da animação)
+                // Isso faz com que a animação "pule" em intervalos regulares
+                setTimeout(() => {
+                    ctaLink.classList.remove('active-pulse');
+                }, 2500); 
+            }
+
+            // 3. Executa a função imediatamente e a repete a cada 5 segundos
+            togglePulse(); // Inicia a primeira animação
+            setInterval(togglePulse, 5000); // Repete a cada 5 segundos
+        });
+    </script>
+</body>
+</html>

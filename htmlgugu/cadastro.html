@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro de Doadores</title>
+    <style>
+        /* Estilização básica para melhor visualização */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #65e6bb;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        legend {
+            font-weight: bold;
+            color: #3498db;
+            padding: 0 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Garante que padding não afete a largura final */
+        }
+        .radio-group label {
+            display: inline-block;
+            margin-right: 15px;
+            font-weight: normal;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Cadastro de Doador</h1>
+        </header>
+
+        <main>
+            <form id="form-doador" action="/processar-doacao" method="post">
+
+                <fieldset>
+                    <legend>Informações Pessoais</legend>
+                    <div class="form-group">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" id="nome" name="nome_completo" required placeholder="Digite seu nome completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="cpf">CPF:</label>
+                        <input type="text" id="cpf" name="cpf" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+                    </div>
+                    <div class="form-group">
+                        <label for="data_nascimento">Data de Nascimento:</label>
+                        <input type="date" id="data_nascimento" name="data_nascimento">
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Endereço</legend>
+                    <div class="form-group">
+                        <label for="cep">CEP:</label>
+                        <input type="text" id="cep" name="cep" pattern="\d{5}-\d{3}" placeholder="00000-000">
+                    </div>
+                    <div class="form-group">
+                        <label for="rua">Rua / Logradouro:</label>
+                        <input type="text" id="rua" name="rua">
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Número:</label>
+                        <input type="text" id="numero" name="numero">
+                    </div>
+                    <div class="form-group">
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" id="cidade" name="cidade">
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado:</label>
+                        <select id="estado" name="estado">
+                            <option value="">Selecione...</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Detalhes da Doação</legend>
+                    <div class="form-group">
+                        <label for="tipo_doacao">Tipo de Doação:</label>
+                        <select id="tipo_doacao" name="tipo_doacao">
+                            <option value="financeira">Financeira</option>
+                            <option value="material">Material (Roupas, Alimentos, etc.)</option>
+                            <option value="servico">Serviço (Trabalho Voluntário)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="valor">Valor da Doação (R$):</label>
+                        <input type="number" id="valor" name="valor_doacao" min="1.00" step="0.01" placeholder="Ex: 50.00">
+                    </div>
+                    <div class="form-group">
+                        <label>Frequência:</label>
+                        <div class="radio-group">
+                            <input type="radio" id="unica" name="frequencia" value="unica" checked>
+                            <label for="unica">Doação Única</label>
+                            
+                            <input type="radio" id="mensal" name="frequencia" value="mensal">
+                            <label for="mensal">Doação Mensal</label>
+                            
+                            <input type="radio" id="anual" name="frequencia" value="anual">
+                            <label for="anual">Doação Anual</label>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="observacoes">Observações:</label>
+                        <textarea id="observacoes" name="observacoes" rows="4" placeholder="Alguma informação adicional?"></textarea>
+                    </div>
+                </fieldset>
+                
+                <button type="submit">Enviar Cadastro</button>
+
+            </form>
+        </main>
+    </div>
+ <h2> <a href="index.html" > Voltar ao menu inicial  </a> </href> 
+</body>
+</html>
