@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultura e Lazer - ONG Cruzeiro do Sul (Projeto Acadêmico Integrado)</title>
+    
+    <style>
+        /* Estilo Básico e Reset */
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef; /* Fundo cinza claro */
+            color: #343a40; /* Texto escuro */
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #17a2b8; /* Azul Turquesa (cor de destaque) */
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+        }
+
+        header p {
+            margin-top: 5px;
+            font-size: 1.3em;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Estilo de Introdução */
+        .introducao {
+            background-color: #d1ecf1; /* Fundo azul claro */
+            color: #0c5460; /* Texto azul escuro */
+            border: 1px solid #bee5eb;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+
+        /* Estilo para a Imagem Destaque (Bem Grande) */
+        .imagem-destaque {
+            margin-bottom: 30px;
+            position: relative;
+            border: 8px solid #343a40; /* Borda escura para dar contraste */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .imagem-destaque img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 550px; /* Limita a altura */
+            object-fit: cover;
+        }
+
+        #legenda-imagem {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(23, 162, 184, 0.85); /* Cor de destaque semi-transparente */
+            color: white;
+            padding: 12px;
+            margin: 0;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+
+        /* Estilo de Conteúdo */
+        .conteudo {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .conteudo h2 {
+            color: #17a2b8;
+            border-bottom: 3px solid #ffc107; /* Linha de destaque Amarela */
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            background-color: #f8f9fa;
+            margin-bottom: 10px;
+            padding: 12px;
+            border-left: 5px solid #007bff; /* Azul vibrante */
+            transition: transform 0.3s;
+        }
+
+        ul li:hover {
+            background-color: #e2e6ea;
+            transform: translateX(5px); /* Efeito sutil de movimento */
+        }
+
+        /* Estilo do Botão */
+        #mostrarLazerBtn {
+            background-color: #28a745; /* Verde */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            border-radius: 50px; /* Botão arredondado */
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        #mostrarLazerBtn:hover {
+            background-color: #1e7e34;
+        }
+
+        /* Conteúdo de lazer ocultável */
+        #atividades-lazer {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px dashed #28a745;
+            border-radius: 5px;
+        }
+
+        /* Classe para ocultar elementos (usada pelo JS) */
+        .oculto {
+            display: none;
+        }
+
+        /* Estilo do Footer */
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #343a40; /* Fundo escuro */
+            color: white;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+    </style>
+    </head>
+<body>
+    <header>
+        <h1>ONG Cruzeiro do Sul</h1>
+        <p>Desenvolvimento Comunitário através da Arte e do Bem-Estar</p>
+    </header>
+
+    <main>
+        <section class="introducao">
+            <h2>Nossa Missão no Eixo de Cultura e Lazer</h2>
+            <p>A ONG Cruzeiro do Sul, criada para fins acadêmicos, tem como foco promover a **inclusão social** e o **desenvolvimento humano integral** por meio de atividades culturais e recreativas. Nossos projetos visam resgatar a identidade local, estimular a criatividade e oferecer momentos de convivência e alegria para todas as idades, combatendo o isolamento e fortalecendo os laços comunitários.</p>
+        </section>
+
+        <section class="imagem-destaque">
+            <img src= "https://www.maracanau.ce.gov.br/wp-content/uploads/2025/04/e865ec5f-f24f-407d-8ffb-f1239f782f31.jpg" alt="Grande imagem de um evento cultural vibrante, como um mural sendo pintado pela comunidade ou uma apresentação de dança.">
+            <p id="legenda-imagem">Incentivando a arte urbana e a expressão cultural da nossa comunidade.</p>
+        </section>
+
+        <section class="conteudo">
+            <h2>Projetos Culturais em Destaque</h2>
+            <p>Investimos na formação e no reconhecimento das expressões artísticas locais. As atividades a seguir são geradas dinamicamente via JavaScript.</p>
+            
+            <ul id="lista-cultura">
+                </ul>
+        </section>
+
+        <section class="conteudo">
+            <h2>Lazer e Qualidade de Vida</h2>
+            <p>O lazer é vital para a saúde mental e física. Clique para ver algumas das nossas atividades recreativas e de integração social que promovem o bem-estar e o espírito de equipe.</p>
+            
+            <button id="mostrarLazerBtn">Ver Cronograma de Lazer</button>
+            <div id="atividades-lazer" class="oculto">
+                <h3>Cronograma Recreativo Semanal</h3>
+                <ul>
+                    <li>**Terças:** Roda de Contação de Histórias para Crianças (Manhã)</li>
+                    <li>**Quartas:** Aulão de Ginástica Funcional na Praça (Noite)</li>
+                    <li>**Sábados:** Gincana Comunitária e Jogos de Tabuleiro (Tarde)</li>
+                    <li>**Mensal:** Passeios de Conhecimento e Turismo Cívico Local</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Projeto Acadêmico | Disciplina de Tecnologia e Sociedade</p>
+    </footer>
+
+    <script>
+        // Aguarda o carregamento completo do DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- 1. Cultura: Adicionar itens à lista dinamicamente ---
+            
+            // Lista de projetos culturais da ONG fictícia
+            const atividadesCulturais = [
+                "Ponto de Leitura 'Arca das Letras' (Incentivo à Literatura)",
+                "Oficina de Percussão e Ritmos Brasileiros",
+                "Ateliê de Restauração e Criação de Artesanato Local",
+                "Ciclos de Cinema e Debate (Foco em Direitos Humanos)",
+                "Apresentações de Dança Contemporânea e Folclórica"
+            ];
+
+            const listaCultura = document.getElementById('lista-cultura');
+
+            // Preenche a lista com os projetos
+            atividadesCulturais.forEach(atividade => {
+                const novoItem = document.createElement('li');
+                // Usa um emoji ou ícone para deixar visualmente mais atraente
+                novoItem.innerHTML = `<span style="color: #ffc107;">★</span> ${atividade}`; 
+                listaCultura.appendChild(novoItem);
+            });
+            
+            
+            // --- 2. Lazer: Funcionalidade de Mostrar/Ocultar ---
+            
+            const botaoLazer = document.getElementById('mostrarLazerBtn');
+            const atividadesLazerDiv = document.getElementById('atividades-lazer');
+            
+            // Adiciona o evento de clique ao botão
+            botaoLazer.addEventListener('click', function() {
+                
+                // Alterna a classe 'oculto'. Se a div estiver visível, oculta; se estiver oculta, exibe.
+                atividadesLazerDiv.classList.toggle('oculto');
+                
+                // Altera o texto do botão
+                if (atividadesLazerDiv.classList.contains('oculto')) {
+                    botaoLazer.textContent = 'Ver Cronograma de Lazer';
+                } else {
+                    botaoLazer.textContent = 'Ocultar Cronograma de Lazer';
+                }
+            });
+
+            // --- 3. Extra: Atualização da Legenda (Exemplo) ---
+
+            const legenda = document.getElementById('legenda-imagem');
+            const dataAtual = new Date().toLocaleDateString('pt-BR');
+
+            // Adiciona a data de hoje à legenda, simulando uma atualização de conteúdo
+            legenda.textContent += ` (Última atualização: ${dataAtual})`;
+
+        });
+    </script>
+
+    <h2> <a href="index.html" > Voltar ao menu inicial  </a> </href> 
+    </body>
+</html>

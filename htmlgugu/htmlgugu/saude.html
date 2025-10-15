@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saúde e Bem-Estar - ONG Cruzeiro do Sul</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --cor-principal: #007BFF; /* Azul vibrante */
+            --cor-secundaria: #0056b3; /* Azul mais escuro para hover */
+            --cor-fundo: #f8f9fa;
+            --cor-texto: #333;
+            --sombra-leve: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--cor-texto);
+            background-color: var(--cor-fundo);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ----------------------------------- */
+        /* 1. Cabeçalho (Header) */
+        /* ----------------------------------- */
+
+        #cabecalho {
+            background-color: white;
+            box-shadow: var(--sombra-leve);
+            padding: 15px 0;
+            position: sticky; /* Fixo no topo */
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        #cabecalho .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #cabecalho h1 {
+            color: var(--cor-principal);
+            font-size: 1.8em;
+        }
+
+        #cabecalho nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        #cabecalho nav ul li a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        #cabecalho nav ul li a:hover {
+            color: var(--cor-principal);
+        }
+
+        /* ----------------------------------- */
+        /* 2. Seção de Destaque (Imagem Grande e Animações de Entrada) */
+        /* ----------------------------------- */
+
+        .hero-section {
+            /* **ATENÇÃO:** Substitua o URL da imagem de fundo pela sua imagem real! */
+            background: linear-gradient(rgba(0, 123, 255, 0.6), rgba(0, 123, 255, 0.6)), url('https://picsum.photos/1920/1080?random=1');
+            background-size: cover;
+            background-position: center;
+            height: 80vh; /* Altura grande para destaque */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            opacity: 0; /* Início da animação */
+            transform: translateY(20px);
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0; /* Início da animação */
+            transform: translateY(20px);
+        }
+
+        /* Keyframes para a animação de entrada */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animar-titulo {
+            animation: slideInUp 1s ease forwards 0.5s;
+        }
+
+        .animar-subtitulo {
+            animation: slideInUp 1s ease forwards 0.8s;
+        }
+
+        /* Botão Chamativo com Animação de Pulso */
+        .botao-animado {
+            background-color: white;
+            color: var(--cor-principal);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: var(--sombra-leve);
+            transition: all 0.3s ease;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        .botao-animado:hover {
+            background-color: var(--cor-principal);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+            100% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+        }
+
+        /* ----------------------------------- */
+        /* 3. Seção de Pilares (Scroll Reveal CSS) */
+        /* ----------------------------------- */
+
+        .secao-pilares {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .titulo-secao {
+            font-size: 2.2em;
+            color: var(--cor-principal);
+            margin-bottom: 50px;
+        }
+
+        .cartoes-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cartao {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--sombra-leve);
+            flex: 1 1 200px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--cor-principal);
+        }
+
+        .cartao:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cartao h4 {
+            color: var(--cor-secundaria);
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        /* Estado inicial (oculto para o Scroll Reveal JS) */
+        .animado {
+            opacity: 0;
+            transform: translateY(50px);
+            /* Transição usada pelo JS */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        /* Estado final (visível - adicionado pelo JS) */
+        .animado.visivel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ----------------------------------- */
+        /* 4. Rodapé e Responsividade */
+        /* ----------------------------------- */
+
+        footer {
+            background-color: var(--cor-principal);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h2 { font-size: 2.5em; }
+            .hero-content p { font-size: 1.2em; }
+            .cartoes-container { flex-direction: column; }
+            .cartao { margin-bottom: 20px; }
+        }
+    </style>
+    </head>
+<body>
+
+    <header id="cabecalho">
+        <div class="container">
+            <h1>ONG Cruzeiro do Sul</h1>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#pilares">Nossos Pilares</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero-section">
+        <div class="hero-content">
+            <h2 class="animar-titulo">Promovendo a Saúde Comunitária</h2>
+            <p class="animar-subtitulo">Cuidado, informação e suporte para um futuro mais saudável.</p>
+            <button id="botao-saiba-mais" class="botao-animado">Saiba Mais</button>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="pilares" class="secao-pilares">
+            <h3 class="titulo-secao">Nossos 4 Pilares do Bem-Estar</h3>
+
+            <div class="cartoes-container">
+                <div class="cartao animado" data-delay="0">
+                    <h4>Nutrição Consciente</h4>
+                    <p>Oferecemos oficinas e consultas para garantir uma alimentação equilibrada para toda a família.</p>
+                </div>
+
+                <div class="cartao animado" data-delay="0.2">
+                    <h4>Movimento e Energia</h4>
+                    <p>Incentivamos práticas esportivas e exercícios leves para todas as idades, promovendo a vitalidade.</p>
+                </div>
+
+                <div class="cartao animado" data-delay="0.4">
+                    <h4>Equilíbrio Emocional</h4>
+                    <p>Grupos de apoio e orientação psicológica para cuidar da mente e reduzir o estresse diário.</p>
+                </div>
+
+                <div class="cartao animado" data-delay="0.6">
+                    <h4>Ações Preventivas</h4>
+                    <p>Campanhas de vacinação, exames e distribuição de kits de higiene e informação.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <div class="container">
+            <p>&copy; 2025 ONG Cruzeiro do Sul. Trabalho Acadêmico.</p>
+            <p>Entre em Contato: Gustavo_lima_dos_Santos@cruzeirodosul.org</p>
+        </div>
+    </footer>
+
+    <script>
+        // ===================================
+        // 1. Animação de Rolagem (Scroll Reveal)
+        // ===================================
+        const elementosAnimados = document.querySelectorAll('.animado');
+
+        // Verifica se um elemento está visível na tela
+        function elementoVisivel(el) {
+            const rect = el.getBoundingClientRect();
+            // Considera visível se estiver a 100px da borda inferior
+            return rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 100;
+        }
+
+        function animarAoRolar() {
+            elementosAnimados.forEach(el => {
+                if (elementoVisivel(el)) {
+                    // Adiciona a classe 'visivel' para aplicar a animação
+                    el.classList.add('visivel');
+
+                    // Aplica o delay definido no HTML
+                    const delay = el.getAttribute('data-delay');
+                    if (delay) {
+                        el.style.transitionDelay = `${delay}s`;
+                    }
+                }
+            });
+        }
+
+        // Adiciona os listeners
+        window.addEventListener('scroll', animarAoRolar);
+        window.addEventListener('load', animarAoRolar); // Anima os que já estão visíveis no carregamento
+
+        // ===================================
+        // 2. Efeito de Cabeçalho Fixo (Mudar cor ao rolar)
+        // ===================================
+        const cabecalho = document.getElementById('cabecalho');
+
+        function mudarCorCabecalho() {
+            if (window.scrollY > 100) {
+                cabecalho.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                cabecalho.style.boxShadow = '0 6px 10px rgba(0, 0, 0, 0.2)';
+            } else {
+                cabecalho.style.backgroundColor = 'white';
+                cabecalho.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            }
+        }
+
+        window.addEventListener('scroll', mudarCorCabecalho);
+
+        // ===================================
+        // 3. Efeito de Clique no Botão (Rolar suavemente)
+        // ===================================
+        const botaoSaibaMais = document.getElementById('botao-saiba-mais');
+
+        botaoSaibaMais.addEventListener('click', () => {
+            // Rola suavemente para a seção de pilares
+            document.getElementById('pilares').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+     <h2> <a href="index.html" > Voltar ao menu inicial  </a> </href> 
+    </body>
+</html>

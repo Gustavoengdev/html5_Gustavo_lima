@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistência Social - ONG Cruzeiro do Sul</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --cor-principal: #FF4500; /* Laranja/Vermelho para acolhimento */
+            --cor-secundaria: #32CD32; /* Verde para esperança/crescimento */
+            --cor-fundo: #f4f4f9;
+            --cor-texto: #333;
+            --sombra-leve: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--cor-texto);
+            background-color: var(--cor-fundo);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ----------------------------------- */
+        /* 1. Cabeçalho (Header) */
+        /* ----------------------------------- */
+
+        #cabecalho {
+            background-color: white;
+            box-shadow: var(--sombra-leve);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        #cabecalho .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #cabecalho h1 {
+            color: var(--cor-principal);
+            font-size: 1.8em;
+        }
+
+        #cabecalho nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        #cabecalho nav ul li a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        #cabecalho nav ul li a:hover {
+            color: var(--cor-principal);
+        }
+
+        /* ----------------------------------- */
+        /* 2. Seção de Destaque (Hero) */
+        /* ----------------------------------- */
+
+        .hero-section {
+            /* **ATENÇÃO:** Substitua o URL pela sua imagem de Assistência Social! */
+            background: linear-gradient(rgba(255, 69, 0, 0.7), rgba(255, 140, 0, 0.7)), url('https://picsum.photos/1920/1080?random=2');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            /* Animação CSS de entrada */
+            opacity: 0; 
+            transform: scale(0.8);
+            animation: fadeInScale 1s ease forwards 0.5s;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            /* Animação CSS de entrada */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInUp 1s ease forwards 0.8s;
+        }
+
+        /* Keyframes para Animações de Entrada */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Botão Chamativo */
+        .botao-animado {
+            background-color: var(--cor-secundaria);
+            color: white;
+            border: 2px solid white;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 30px; /* Borda arredondada */
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .botao-animado:hover {
+            background-color: white;
+            color: var(--cor-principal);
+            border-color: var(--cor-principal);
+            transform: scale(1.05) rotate(-1deg); /* Efeito sutil */
+        }
+
+        /* ----------------------------------- */
+        /* 3. Seção de Programas (Scroll Reveal CSS/JS) */
+        /* ----------------------------------- */
+
+        .secao-programas {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .titulo-secao {
+            font-size: 2.5em;
+            color: var(--cor-principal);
+            margin-bottom: 50px;
+            border-bottom: 3px solid var(--cor-secundaria);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .cartoes-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .programa-cartao {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--sombra-leve);
+            flex: 1 1 250px;
+            text-align: left;
+            border-left: 8px solid var(--cor-principal);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .programa-cartao:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .programa-cartao h4 {
+            color: var(--cor-principal);
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        /* Estilos para o Scroll Reveal JS */
+        .animado {
+            opacity: 0;
+            transform: translateX(-50px); /* Virá da esquerda */
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .animado:nth-child(even) { /* Cartões pares virão da direita */
+            transform: translateX(50px);
+        }
+
+        /* Classe que o JS adiciona quando visível */
+        .animado.visivel {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ----------------------------------- */
+        /* 4. Rodapé e Responsividade */
+        /* ----------------------------------- */
+
+        footer {
+            background-color: var(--cor-principal);
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h2 { font-size: 2.8em; }
+            .hero-content p { font-size: 1.1em; }
+            .cartoes-container { flex-direction: column; }
+            .programa-cartao { flex: 1 1 100%; margin-bottom: 20px; }
+        }
+    </style>
+    </head>
+<body>
+
+    <header id="cabecalho">
+        <div class="container">
+            <h1>Cruzeiro Social</h1>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#programas">Programas</a></li>
+                    <li><a href="#contato">Apoie</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero-section">
+        <div class="hero-content">
+            <h2>Transformando Vidas Através da Assistência Social</h2>
+            <p>Apoio, dignidade e oportunidades para a nossa comunidade.</p>
+            <button id="botao-conhecer" class="botao-animado">Conheça Nossos Programas</button>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="programas" class="secao-programas">
+            <h3 class="titulo-secao">Nossos Pilares de Atuação</h3>
+
+            <div class="cartoes-container">
+                <div class="programa-cartao animado" data-delay="0">
+                    <h4>Apoio Integral à Família</h4>
+                    <p>Oferecemos acompanhamento psicossocial e apoio material para famílias em situação de vulnerabilidade.</p>
+                </div>
+
+                <div class="programa-cartao animado" data-delay="0.2">
+                    <h4>Capacitação e Renda</h4>
+                    <p>Cursos profissionalizantes e workshops de empreendedorismo para promover a autonomia financeira.</p>
+                </div>
+
+                <div class="programa-cartao animado" data-delay="0.4">
+                    <h4>Defesa de Direitos</h4>
+                    <p>Orientações jurídicas e de cidadania para garantir o acesso a programas e benefícios sociais.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <div class="container">
+            <p>&copy; 2025 ONG Cruzeiro do Sul - Assistência Social.</p>
+            <p>Entre em Contato: Gustavo_Lima_dos_Santos@cruzeirodosul.org</p>
+        </div>
+    </footer>
+
+    <script>
+        // ===================================
+        // 1. Animação de Rolagem (Scroll Reveal)
+        // ===================================
+        const elementosAnimados = document.querySelectorAll('.animado');
+
+        // Verifica se o elemento está na área visível da tela
+        function elementoVisivel(el) {
+            const rect = el.getBoundingClientRect();
+            // 80px acima do final da tela
+            return rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 80;
+        }
+
+        function animarAoRolar() {
+            elementosAnimados.forEach(el => {
+                if (elementoVisivel(el)) {
+                    el.classList.add('visivel');
+
+                    // Aplica o delay definido no HTML
+                    const delay = el.getAttribute('data-delay');
+                    if (delay) {
+                        el.style.transitionDelay = `${delay}s`;
+                    }
+                }
+            });
+        }
+
+        // Adiciona os listeners
+        window.addEventListener('scroll', animarAoRolar);
+        window.addEventListener('load', animarAoRolar);
+
+        // ===================================
+        // 2. Efeito de Cabeçalho Fixo
+        // ===================================
+        const cabecalho = document.getElementById('cabecalho');
+
+        function mudarCorCabecalho() {
+            if (window.scrollY > 80) {
+                // Fundo com transparência sutil ao rolar
+                cabecalho.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                cabecalho.style.boxShadow = '0 6px 10px rgba(0, 0, 0, 0.15)';
+            } else {
+                cabecalho.style.backgroundColor = 'white';
+                cabecalho.style.boxShadow = 'var(--sombra-leve)';
+            }
+        }
+
+        window.addEventListener('scroll', mudarCorCabecalho);
+
+        // ===================================
+        // 3. Efeito de Clique no Botão
+        // ===================================
+        const botaoConhecer = document.getElementById('botao-conhecer');
+
+        botaoConhecer.addEventListener('click', () => {
+            // Rola suavemente para a seção de programas
+            document.getElementById('programas').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+    <h2> <a href="index.html" > Voltar ao menu inicial  </a> </href> 
+    </body>
+</html>

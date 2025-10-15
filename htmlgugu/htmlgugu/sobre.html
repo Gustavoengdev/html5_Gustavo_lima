@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Gustavo Lima: Engenharia e Transição para TI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --cor-fundo-principal: #001F3F; /* Azul Marinho Escuro */
+            --cor-destaque: #007BFF; /* Azul Elétrico (Brilha no Escuro) */
+            --cor-texto-claro: #F8F9FA; /* Branco Suave */
+            --cor-card-fundo: #003366; /* Azul Marinho Médio para cartões */
+            --sombra-ti: 0 0 20px rgba(0, 123, 255, 0.5); /* Sombra que "brilha" */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--cor-texto-claro);
+            background-color: var(--cor-fundo-principal); /* Fundo Azul Marinho */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ----------------------------------- */
+        /* 1. Cabeçalho */
+        /* ----------------------------------- */
+
+        #cabecalho {
+            background-color: rgba(0, 0, 0, 0.3); /* Fundo escuro transparente */
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--cor-destaque);
+        }
+
+        #cabecalho .container h1 {
+            color: var(--cor-texto-claro);
+            font-size: 2em;
+            font-weight: 800;
+        }
+
+        /* ----------------------------------- */
+        /* 2. Seção de Destaque (Hero) */
+        /* ----------------------------------- */
+
+        .hero-section {
+            /* **ATENÇÃO:** Substitua o URL pela sua imagem (foco em TI/Engenharia/Gustavo) */
+            background: linear-gradient(rgba(0, 31, 63, 0.8), rgba(0, 31, 63, 0.6)), url('https://picsum.photos/1000/700?random=5');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 4.5em;
+            margin-bottom: 10px;
+            color: var(--cor-destaque);
+            text-shadow: 0 0 10px var(--cor-destaque);
+            /* Animação CSS: Pisca para atrair atenção */
+            animation: fadeIn 1s ease forwards, glow 2s infinite alternate;
+            opacity: 0;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            font-weight: 300;
+            color: var(--cor-texto-claro);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px var(--cor-destaque); }
+            to { text-shadow: 0 0 20px var(--cor-destaque); }
+        }
+
+        /* ----------------------------------- */
+        /* 3. Seção Principal (Conteúdo) */
+        /* ----------------------------------- */
+
+        .secao-sobre {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .secao-sobre h3 {
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            color: var(--cor-destaque);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .secao-sobre h3::after {
+            content: '';
+            width: 50%;
+            height: 3px;
+            background: var(--cor-destaque);
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+        }
+
+        /* Novo Layout de Boxes: Linha do Tempo/Habilidades */
+        .timeline-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .timeline-card {
+            background-color: var(--cor-card-fundo);
+            padding: 30px;
+            border-radius: 12px;
+            flex: 1 1 300px;
+            text-align: left;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--cor-destaque);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .timeline-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--sombra-ti);
+        }
+
+        .timeline-card h4 {
+            color: var(--cor-destaque);
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--cor-destaque);
+            padding-bottom: 5px;
+        }
+        
+        .timeline-card p {
+            color: var(--cor-texto-claro);
+        }
+
+        /* Scroll Reveal (Fade In e Subida) */
+        .animado {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animado.visivel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ----------------------------------- */
+        /* 4. Rodapé */
+        /* ----------------------------------- */
+
+        footer {
+            background-color: #001122;
+            color: var(--cor-texto-claro);
+            padding: 25px 0;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 5px solid var(--cor-destaque);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero-content h2 { font-size: 3em; }
+            .hero-content p { font-size: 1.2em; }
+            .timeline-container { flex-direction: column; }
+            .timeline-card { flex: 1 1 100%; margin-bottom: 20px; }
+        }
+    </style>
+    </head>
+<body>
+
+    <header id="cabecalho">
+        <div class="container">
+            <h1>GUSTAVO LIMA | Portfólio</h1>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero-section">
+        <div class="hero-content">
+            <h2>GUSTAVO LIMA</h2>
+            <p>Engenharia Mecânica &rarr; Tecnologia da Informação. Lógica e Inovação.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="secao-sobre">
+            <h3 class="animado" data-delay="0">Minha Jornada de Engenharia à TI</h3>
+
+            <div class="timeline-container">
+                <div class="timeline-card animado" data-delay="0.2">
+                    <h4>1. Engenharia Mecânica: A Base Lógica</h4>
+                    <p>Como Engenheiro Mecânico, desenvolvi uma base sólida em **raciocínio lógico, otimização de processos** e **resolução de problemas complexos**. A precisão exigida na área me ensinou a projetar sistemas robustos e a analisar falhas de forma metódica.</p>
+                </div>
+
+                <div class="timeline-card animado" data-delay="0.4">
+                    <h4>2. A Transição para a Tecnologia da Informação</h4>
+                    <p>Migrei para a TI buscando aplicar minha lógica estruturada na **construção de soluções digitais**. A transição não é uma mudança de habilidade, mas sim de ferramenta: troquei o projeto de máquinas pelo **projeto de código**, focando em desenvolvimento web e sistemas.</p>
+                </div>
+
+                <div class="timeline-card animado" data-delay="0.6">
+                    <h4>3. Projeto ONG Cruzeiro do Sul</h4>
+                    <p>Este trabalho (páginas `saude.html`, `assistencia-social.html` e `educacao.html`) demonstra a aplicação prática das minhas novas habilidades em **HTML5, CSS e JavaScript**. Simulo a criação de portais funcionais e animados para uma causa social da faculdade.</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 40px; font-size: 1.1em; color: var(--cor-texto-claro); text-align: center;" class="animado" data-delay="0.8">
+                **Minha Força:** A união da precisão da Engenharia com a inovação da TI me permite criar soluções que não apenas funcionam, mas que são eficientes e escaláveis.
+            </p>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Projeto Acadêmico para a Faculdade Cruzeiro do Sul.</p>
+            <p>Desenvolvido por Gustavo Lima | &copy; 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // ===================================
+        // 1. Animação de Rolagem (Scroll Reveal)
+        // ===================================
+        const elementosAnimados = document.querySelectorAll('.animado');
+
+        // Verifica se o elemento está na área visível da tela
+        function elementoVisivel(el) {
+            const rect = el.getBoundingClientRect();
+            // Considera visível se estiver a 120px da borda inferior
+            return rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 120;
+        }
+
+        function animarAoRolar() {
+            elementosAnimados.forEach(el => {
+                if (elementoVisivel(el)) {
+                    el.classList.add('visivel');
+
+                    // Aplica o delay definido no HTML
+                    const delay = el.getAttribute('data-delay');
+                    if (delay) {
+                        el.style.transitionDelay = `${delay}s`;
+                    }
+                }
+            });
+        }
+
+        // Adiciona os listeners
+        window.addEventListener('scroll', animarAoRolar);
+        window.addEventListener('load', animarAoRolar);
+        animarAoRolar(); // Executa uma vez no carregamento
+    </script>
+
+    <a href="index.html" > Voltar ao menu inicial  </a> </href> 
+    </body>
+</html>
